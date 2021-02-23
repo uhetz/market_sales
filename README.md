@@ -2,6 +2,7 @@
 It's a data visualization project, that will be added later to my portfolio.
 
 Tech: ReactTS, d3.JS
+
 Data are taken [from](https://www.kaggle.com/aungpyaeap/supermarket-sales)
 
 # Getting Started with Create React App
