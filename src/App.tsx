@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  Component
+} from 'react';
+import { 
+  THubState
+} from './types';
+import * as d3 from 'd3';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import TransactionVolumeAtTheDay from './charts/TransactionVolumeAtTheDay';
+
+class App extends Component<{}, THubState> {
+  state: THubState = {
+    data: [],
+  }
+
+  componentDidMount() {
+    d3.csv('./supermarket_sales.csv').then((data) => {
+      this.setState({ data })
+    })
+  }
+
+  componentDidUpdate() {
+  }
+  
+  render() {
+    return (
+      <div className='main'>
+        <TransactionVolumeAtTheDay data={this.state.data} />
+      </div>
+    );
+  }
 }
 
 export default App;
