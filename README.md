@@ -1,3 +1,9 @@
+# About
+It's a datavisualization project, that will be added later to my portfolio.
+
+Tech: ReactTS, d3.JS
+Data are taken [from](https://www.kaggle.com/aungpyaeap/supermarket-sales)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
