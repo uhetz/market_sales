@@ -25,7 +25,7 @@ export type THubState = {
 }
 
 export type TTransactionVolumeElement = {
-    hour: number,
+    hour: string,
     // payment: string,
     // gender: string,
     productLine: [string, number][],

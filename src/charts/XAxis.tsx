@@ -15,7 +15,6 @@ const XAxis: FC<AxisProps> = (props: AxisProps) => {
         const g = d3.select(ref.current);
         const axisGenerator = d3.axisBottom(props.scale);
         axisGenerator(g as d3.Selection<SVGGElement, any, any, any>);
-        d3.select('.axis .tick:first-child').remove();
     })
 
     return (

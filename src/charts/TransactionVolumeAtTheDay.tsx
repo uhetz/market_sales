@@ -39,12 +39,16 @@ class TransactionVolumeAtTheDay extends Component<TTransactionVolumeProps, TTran
     yScale = d3.scaleLinear();
 
     setIsToolTipVisible = (cx: number, i: TTransactionVolumeElement) => {
-        if (!this.state.isToolTipVisible) this.setState({ 
-            isToolTipVisible: true,
-            xTooltip: cx,
-            yTooltip: this.state.dims.height - this.state.dims.margin.bottom + 5,
-            eTooltip: i
-        });
+        if (!this.state.isToolTipVisible) {
+            const domain = this.xScale.domain()[Math.round(cx / this.xScale.step()) - 1]
+            console.log(domain)
+            this.setState({ 
+                isToolTipVisible: true,
+                xTooltip: (this.xScale(domain)) as number + this.state.dims.margin.left + this.state.dims.margin.right - 5,
+                yTooltip: this.state.dims.height - this.yScale(i.value),
+                eTooltip: i
+            });
+        }
     }
     setTooltipInvisibile = () => {
         if (this.state.isToolTipVisible) this.setState({
@@ -76,8 +80,9 @@ class TransactionVolumeAtTheDay extends Component<TTransactionVolumeProps, TTran
             (d: TCSV) => d['Product line']
         ).sort((a, b) => d3.ascending(a[0], b[0])).map((item) => {
             const sum = d3.sum(item[1], d => +d[1]);
+            const h = +item[0] < 13 ? item[0] + ' AM' : +item[0] - 12 + ' PM'
             return {
-                hour: +item[0],
+                hour: h,
                 value: Math.round(sum),
                 productLine: item[1]
             }

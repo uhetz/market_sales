@@ -6,7 +6,6 @@ import {
 } from 'react';
 import * as d3 from 'd3';
 import { TBarProps, TTransactionVolumeElement } from '../types';
-import { AnyCnameRecord } from 'dns';
 
 const Bar: FC<TBarProps> = (props) => {
     const [ref, setRef] = useState(createRef<SVGGElement>());
@@ -28,14 +27,13 @@ const Bar: FC<TBarProps> = (props) => {
             })`);
         d3.select(ref.current).selectAll('rect')
             .on('mouseenter', onMouseEnter)
-            // .on('mouseleave', onMouseLeave);
         return () => {
             d3.select(ref.current).selectAll('rect').remove();
         }
     })
 
     const onMouseEnter = (d: MouseEvent, i: any) => {
-        props.setIsToolTipVisible(d.clientX, i as TTransactionVolumeElement);
+        props.setIsToolTipVisible(d.offsetX, i as TTransactionVolumeElement);
     }
 
     const onMouseLeave = () => {

@@ -25,8 +25,25 @@ class App extends Component<{}, THubState> {
   
   render() {
     return (
-      <div className='main'>
-        <TransactionVolumeAtTheDay data={this.state.data} />
+      <div className='container'>
+        <div className='header'>
+          <h1>Sales of a supermarket</h1>
+          <h3>Transactions while a day divided by hours</h3>
+        </div>
+
+        <div className='main'>
+          <div className='chart'>
+            <TransactionVolumeAtTheDay data={this.state.data} />
+          </div>
+        </div>
+
+        <div className='footer'>
+          <div className='info-container'>
+            <p>Dataset from <a href="https://www.kaggle.com/aungpyaeap/supermarket-sales">kaggle</a></p>
+            <p><a href="https://twitter.com/uhhetz">twitter</a></p>
+            <p><a href="https://hermhetzel@gmail.com">mail me</a></p>
+          </div>
+        </div>
       </div>
     );
   }

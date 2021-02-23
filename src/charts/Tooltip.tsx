@@ -9,7 +9,7 @@ const Tooltip: FC<TTooltip> = (props) => {
             style={{
                 position: 'absolute',
                 left: props.x,
-                top: props.y
+                bottom: props.y
             }}
         >
             <div className='tooltip'>
@@ -22,22 +22,6 @@ const Tooltip: FC<TTooltip> = (props) => {
                         </tr>
                         {
                             props.element?.productLine.map(item => (
-                                // <div className='tooltip-productline'>
-                                //     <span className='name'>
-                                //         { item[0] }:
-                                //     </span> 
-
-                                //     <span className='value'>
-                                //         { Math.round(item[1]) }
-                                //     </span> 
-
-                                //     <span className='name'>
-                                //         ({ Math.round(item[1] / props.element.value * 100) }%)
-                                //     </span>
-
-                                // </div>
-
-
                                 <tr>
                                     <td>
                                         <span className='product'>
